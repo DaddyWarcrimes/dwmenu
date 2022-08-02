@@ -3,10 +3,13 @@
 #include "mitem.h"
 #include <string>
 
+using namespace std;
+
 class executeItem : public mitem
 {
 	private:
-		std::string command;
+		int test;
+		string command;
 	public:
 		executeItem();
 		~executeItem();

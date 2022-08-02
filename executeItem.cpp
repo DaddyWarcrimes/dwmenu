@@ -16,9 +16,9 @@ void executeItem::setCommand(std::string newCommand)
 	command = newCommand;
 	return;
 }
-std::string getCommand()
+std::string executeItem::getCommand()
 {
-	return "hi";
+	return command;
 }
 
 void executeItem::execute()
