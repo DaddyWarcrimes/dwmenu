@@ -5,6 +5,7 @@
 #pragma once
 
 #include<iostream>
+#include<string>
 
 class config
 {
@@ -12,6 +13,8 @@ class config
 		bool sudo;
 		bool clearBeforeExecute;
 		bool pauseBeforeContinue;
+		bool initialize(); // Creates a new configuration file
+		std::string configFile();
 	public:
 		config();
 		~config();
@@ -22,5 +25,6 @@ class config
 		bool isClearBeforeExecute();
 		void setPauseBeforeContinue(bool set);
 		bool isPauseBeforeContinue();
-
+		void load();
+		void write();
 };

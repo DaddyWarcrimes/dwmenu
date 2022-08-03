@@ -1,8 +1,8 @@
-OBJS	= main.o mitem.o executeItem.o config.o
+OBJS	= main.o mitem.o executeItem.o config.o 
 
 SOURCE  = main.cpp mitem.cpp executeItem.cpp config.cpp
 
-HEADER  = mitem.h executeItem.h config.h
+HEADER  = mitem.h executeItem.h config.h compileOptions.h
 
 OUT	= dwmenu
 CC	= g++

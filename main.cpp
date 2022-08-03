@@ -27,7 +27,7 @@ int main()
 	{
 		std::cout << "sudo worked \n";
 	}
-	
+	c->load();
 
 	return 0;
 }
