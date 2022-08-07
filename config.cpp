@@ -3,6 +3,7 @@ Configuration settings
 implement as singleton pattern
 Always invoke using the getInstance function
 */
+#define DEBUG
 
 #include "config.h"
 #include <iostream>
@@ -48,6 +49,11 @@ bool config::initialize()
 	file = file + file2;
 	if(!mkdir(file.c_str(),0777))
 	{
+#ifdef DEBUG
+		printf("%s\n","directory not created ---DEBUG---");
+#endif
+		
+
 		return false;
 	}
 	std::ofstream outfile;

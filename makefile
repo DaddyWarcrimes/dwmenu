@@ -1,8 +1,8 @@
-OBJS	= main.o mitem.o executeItem.o config.o 
+OBJS	= main.o mitem.o executeItem.o config.o menu.o
 
-SOURCE  = main.cpp mitem.cpp executeItem.cpp config.cpp
+SOURCE  = main.cpp mitem.cpp executeItem.cpp config.cpp menu.cpp
 
-HEADER  = mitem.h executeItem.h config.h compileOptions.h
+HEADER  = mitem.h executeItem.h config.h compileOptions.h menu.h
 
 OUT	= dwmenu
 CC	= g++
@@ -17,6 +17,9 @@ mitem.o: mitem.cpp
 
 executeItem.o: executeItem.cpp
 		$(CC) $(FLAGS) executeItem.cpp
+		
+menu.o: menu.cpp
+		$(CC) $(FLAGS) menu.cpp
 
 config.o: config.cpp
 		$(CC) $(FLAGS) config.cpp

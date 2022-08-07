@@ -5,6 +5,7 @@
 #include "mitem.h"
 #include "executeItem.h"
 #include "config.h"
+#include "menu.h"
 
 int main()
 {
@@ -19,6 +20,20 @@ int main()
 	std::cout << "scaled * .02 " << fitem.getUses() << std::endl;
 	fitem.setCommand("pwd");
 	fitem.execute();
+	executeItem gitem;
+	gitem.setTitle("smork");
+	gitem.setCommand("echo smork");
+	gitem.execute();
+	
+	//menu test
+	menu a;
+	a.addItem(&fitem);
+	a.addItem(&gitem);
+	a.executeItem(0);
+	a.executeItem(1);
+	a.executeItem("This is a title");
+	a.executeItem("smork");
+
 
 	// config tests
 	config* c = c->getInstance();
