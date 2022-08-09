@@ -7,9 +7,13 @@ Always invoke using the getInstance function
 
 #include "config.h"
 #include <iostream>
-#include <sys/stat.h>
+//#include <sys/stat.h>
+#include <filesystem>
+#include <cstdlib>
 #include <fstream>
 #include "compileOptions.h"
+
+namespace fs = std::filesystem;
 
 
 config::config()
@@ -42,20 +46,35 @@ bool config::isSudo()
 {
 	return sudo;
 }
+// Create default settings file
 bool config::initialize()
 {
+	//Generate string for config directory
 	std::string file = getenv("HOME");
-	std::string file2 = "/.config/dwmenu";
-	file = file + file2;
-	if(!mkdir(file.c_str(),0777))
+	file = file + "/" + CONFIG_DIRECTORY +  "/" + CONFIG_SUBDIRECTORY;
+	// Checks if config directory exists, and creates if needed
+	while(!fs::exists(file) )
 	{
 #ifdef DEBUG
-		printf("%s\n","directory not created ---DEBUG---");
+		printf("%sConfig directory not found\n","---DEBUG---");
 #endif
-		
-
-		return false;
+		 if(!fs::create_directory(file) )
+		 {
+#ifdef DEBUG
+			 printf("%sUnable to create directory \n","---DEBUG---");
+#endif
+			  return false;
+		 }
+		 else
+		 {
+#ifdef DEBUG
+			printf("%sConfig directory created\n","---DEBUG---");
+#endif
+			
+		 }
+		 
 	}
+// Set default settings and write to file
 	std::ofstream outfile;
 	sudo = DEFAULT_SUDO;
 	clearBeforeExecute = DEFAULT_CLEAR;
@@ -80,6 +99,8 @@ void config::write()
 	return;
 
 }
+
+//TODO: read file contents and set paramaters
 void config::load()
 {
 	std::ifstream infile;
@@ -92,9 +113,10 @@ void config::load()
 		return;
 	}
 }
+//Generates a string the full path to the config file
 std::string config::configFile()
 {
 	std::string file = getenv("HOME");
-	file = file + "/.config/dwmenu/settings.cfg";
+	file = file + "/" + CONFIG_DIRECTORY + "/" + CONFIG_SUBDIRECTORY + "/settings.cfg";
 	return file;
 }

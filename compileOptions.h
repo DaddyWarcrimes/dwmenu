@@ -1,5 +1,13 @@
 // Pre-compile configuration options
 //
+
+// Disk names
+//
+// Configuration directory under /home
+#define CONFIG_DIRECTORY ".config"
+
+// Configuration subdirectory
+#define CONFIG_SUBDIRECTORY "dwmenu"
 //
 // Configuration Defaults
 //
